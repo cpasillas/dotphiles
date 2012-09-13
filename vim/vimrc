@@ -16,7 +16,7 @@ if has("user_commands")
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
   "let g:vundles=['general', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
-  let g:vundles=['general']
+  let g:vundles=['general', 'programming', 'python', 'html', 'javascript']
   " Load 'vundles'
   source ~/.vim/vundles.vim
   " Add extra bundles here...
@@ -24,4 +24,82 @@ if has("user_commands")
 endif
 
 " Customize to your needs...
+syntax on
+
+" Google stuffs
+source /usr/share/vim/google/google.vim
+source ~/othergoogs.vim
+
+" GENERAL OPTIONS
+behave xterm
+set history=500 " keep {number} lines of command line history
+set nowrap
+set softtabstop=2
+set shiftwidth=2
+set smarttab
+set clipboard=unnamedplus
+set expandtab
+set number
+set nocompatible
+set incsearch
+set showmatch
+set noerrorbells novisualbell
+set nobackup nowb noswapfile
+set nohlsearch
+set backspace=1
+set tabpagemax=100
+
+map tj :tabnext<CR>
+map tk :tabprevious<CR>
+map th :tabfirst<CR>
+map tl :tablast<CR>
+map te :tabedit<CR>
+
+cmap w!! %!sudo tee > /dev/null %
+
+set cinoptions=:0,p0,t0
+set cinwords=if,else,while,do,for,switch,case
+set formatoptions=tcqr
+set autoindent
+" set modeline=0 " security issue
+
+filetype on
+filetype plugin on
+
+" set colorcolumn=80
+if exists('+colorcolumn')
+  "set colorcolumn=81  "ugly because it colors full column
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%<82v.\%>81v', -1)
+  "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+" The following alternative may be less obtrusive.
+" highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+" Show trailing whitespace:
+" match ExtraWhitespace /\s\+$/
+" remove whitespace when saving ruby files
+autocmd BufWritePre *.rb,*.suite,*.py,*.sh :%s/\s\+$//e
+" use real regexps
+" nnoremap / /\v
+" vnoremap / /\v
+
+" shortcut
+nnoremap ; :
+inoremap jj <ESC>
+
+" DISPLAYING TEXT
+
+if has("autocmd")
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent indenting.
+    filetype plugin indent on
+endif
+
+"hi clear SpellBad
+"hi SpellBad term=standout cterm=underline
+"hi SpellCap cterm=underline
+"hi SpellRare term=standout ctermfg=1 cterm=underline
+"hi SpellLocal term=standout ctermfg=1 cterm=underline
+"set spell
 
