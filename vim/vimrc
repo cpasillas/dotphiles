@@ -54,6 +54,7 @@ map tk :tabprevious<CR>
 map th :tabfirst<CR>
 map tl :tablast<CR>
 map te :tabedit<CR>
+map tt :CommandT<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
@@ -103,3 +104,4 @@ endif
 "hi SpellLocal term=standout ctermfg=1 cterm=underline
 "set spell
 
+let g:syntastic_python_checker = 'gpylint'
