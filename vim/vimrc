@@ -26,10 +26,6 @@ endif
 " Customize to your needs...
 syntax on
 
-" Google stuffs
-source /usr/share/vim/google/google.vim
-source ~/othergoogs.vim
-
 " GENERAL OPTIONS
 behave xterm
 set history=500 " keep {number} lines of command line history
